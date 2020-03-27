@@ -4,10 +4,13 @@
 # Initializes the ui. 
 # Used to load in your header, sidebar, and body components.
 ###################
-source('./components/header.R')
+
+source('./components//header.R')
 source('./components/sidebar.R')
 source('./components/body.R')
-
+library(deSolve)
+library(shiny)
+library(shinydashboard)
 
 ui <- dashboardPage(
   header = header,

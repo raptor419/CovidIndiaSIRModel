@@ -5,6 +5,9 @@
 # If you had multiple tabs, you could split those into their own
 # components as well.
 ###################
+library(shiny)
+library(shinydashboard)
+
 body <- dashboardBody(
   tabItems(
     
@@ -18,34 +21,29 @@ body <- dashboardBody(
         # CONTROLS
         box(
           
-          title = "Controls",
+          title = "Parameters",
           
-          # Choose a column
-          selectInput(
-            "columnChoice",
-            "Choose a column:",
-            choices = colnames(df),
-            selected = "n"),
+          sliderInput("time",
+                      "Time of Prediction:",
+                      min = 0,
+                      max = 200,
+                      value = 100),
+          selectInput("variable", "Variable:",
+                      c("Uttar Pradesh" = "up",
+                        "Rajasthan" = "rj",
+                        "Karnataka" = "kr",
+                        "Delhi" = "dl",
+                        "Maharashtra" = "mh",
+                        "Kerala" = "k", 
+                        "India" = "in")),
           
-          sliderInput("slider", "Number of observations:", 1, 100, 50),
-          
-          # Create an eventReactive element
-          actionButton(
-            inputId = "submit",
-            label = "Submit column")
           
         ),
         # PLOT THE THTINGS
-        box( plotOutput("histPlot") )
+        # box( tableOutput("data") ),
+        box( plotOutput("distPlot")),
+       
       )
-    ),
-    
-    ########################
-    # Second tab content
-    ########################
-    tabItem(
-      tabName = "widgets",
-      h2("Widgets tab content")
     )
   )
 )
