@@ -16,3 +16,4 @@ I personally like to compartmentalize my code in a way that's manageable, and ea
 
 
 Good luck, and happy coding :) 
+"# CovidIndiaSIRModel" 
