@@ -1,0 +1,12 @@
+name: SIRModel
+title: SIRModel
+username:
+account: covidactionindia
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2009375
+bundleId: 2934507
+url: https://covidactionindia.shinyapps.io/SIRModel/
+when: 1585356480.60592
+asMultiple: FALSE
+asStatic: FALSE

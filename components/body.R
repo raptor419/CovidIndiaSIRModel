@@ -28,6 +28,11 @@ body <- dashboardBody(
                       min = 0,
                       max = 200,
                       value = 100),
+          sliderInput("mf",
+                      "Multiplication Factor:",
+                      min = 2,
+                      max = 10,
+                      value = 4),
           selectInput("variable", "Variable:",
                       c("Uttar Pradesh" = "up",
                         "Rajasthan" = "rj",
@@ -35,15 +40,58 @@ body <- dashboardBody(
                         "Delhi" = "dl",
                         "Maharashtra" = "mh",
                         "Kerala" = "k", 
-                        "India" = "in")),
+                        "India" = "ind")),
           
           
         ),
         # PLOT THE THTINGS
         # box( tableOutput("data") ),
         box( plotOutput("distPlot")),
+        
        
       )
+    ),
+
+    ########################
+    # Second tab content
+    ########################
+    tabItem(
+      tabName = "covidmodel",
+      includeHTML("./components/covid.html")
+    ),
+
+    tabItem(
+      tabName = "tempmodel",
+      fluidRow(
+        
+        # CONTROLS
+        box(
+          
+          title = "Parameters",
+          
+          sliderInput("leadtime",
+                      "Lead Time:",
+                      min = 0,
+                      max = 200,
+                      value = 100),
+          
+          selectInput("state", "State:",
+                      c("Kerala" = "Kerala",
+                        "Delhi" = "Delhi",
+                        "Maharashtra" = "Maharashtra",
+                        "Rajasthan" = "Rajasthan",
+                        "Karnataka" = "Karnataka")),
+          
+        ),
+        # PLOT THE THTINGS
+        # box( tableOutput("data") ),
+        box( plotOutput("tempPlot")),
+        box( plotOutput("tempPlot2")),
+        box( pre(textOutput("gamsumm")), tags$style(type="text/css", "#gamsumm {white-space: pre-wrap;}"))
+
+      )
+        
     )
+
   )
-)
+)	

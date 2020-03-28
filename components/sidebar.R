@@ -8,8 +8,10 @@ library(shinydashboard)
 
 sidebar <- dashboardSidebar(
   sidebarMenu(
-
-    menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard"))
+    
+    menuItem("SIR Models", tabName = "dashboard", icon = icon("dashboard"), selected = T),
+    menuItem("Temperature Models", tabName = "tempmodel", icon = icon("dashboard")),
+    menuItem("Spread Simulation", tabName = "covidmodel", icon = icon("dashboard"))
     
   )
 )

@@ -6,4 +6,4 @@
 library(shiny)
 library(shinydashboard)
 
-header <- dashboardHeader(title = "SIR Models")
+header <- dashboardHeader(title = "COVID Models")

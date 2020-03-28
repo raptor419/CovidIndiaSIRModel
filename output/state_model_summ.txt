@@ -1,0 +1,23 @@
+
+Call: gam(formula = my_formula, family = poisson, data = indian_cases_state_temp)
+Deviance Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.2195 -1.2664 -0.8406 -0.3463  3.2677 
+
+(Dispersion Parameter for poisson family taken to be 1)
+
+    Null Deviance: 376.0804 on 54 degrees of freedom
+Residual Deviance: 94.213 on 51 degrees of freedom
+AIC: 153.7312 
+
+Number of Local Scoring Iterations: 6 
+
+Anova for Parametric Effects
+                           Df  Sum Sq Mean Sq  F value    Pr(>F)    
+Total.Confirmed.cases_diff  1 271.882 271.882 134.5631 6.445e-16 ***
+Avg_temp                    1   3.207   3.207   1.5874   0.21344    
+RH2M                        1  14.412  14.412   7.1327   0.01013 *  
+Residuals                  51 103.044   2.020                       
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
