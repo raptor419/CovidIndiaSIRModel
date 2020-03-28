@@ -30,12 +30,40 @@ server <- function(input, output, session) {
     t <- 1:input$time
     fit <- data.frame(ode(y = init, times = t, func = SIR, parms = Opt_par))
     col <- 1:3 # colour
-    matplot(fit$time, fit[ , 3:4], type = "l", xlab = "Day", ylab = "Number of subjects", lwd = 2, lty = 1, col = col)
+    matplot(fit$time, fit[ , 3:4], type = "l", col = c("#FF0000", "#0000AA"), xlab = "Day", ylab = "Number of subjects", lwd = 2, lty = 1)
     ## Warning in xy.coords(x, y, xlabel, ylabel, log = log): 1 y value <= 0## omitted from logarithmic plot
     points(Day, Infected)
-    legend("topleft", c("infected", "recovered"), lty = 1, lwd = 2, col = col, inset = 0.05)
+    legend("topleft", c("infected", "recovered"), lty = 1, lwd = 2, col = c("#FF0000", "#0000AA"), inset = 0.05)
     title(title[input$variable], outer = TRUE, line = -2)
 
+  }) 
+  
+  output$distPlot2 <- renderPlot({
+    # generate bins based on input$bins from ui.R
+    #x    <- faithful[, 2]
+    t <- 1:input$time2
+    #init <- c(S = 114200000-2,I = 2, R = 0)
+    parms <- c(beta[input$variable2],gamma[input$variable2],population2[input$variable2])
+    names(parms) <- c("beta","gamma","N")
+    #parms
+    init <- c(suscep[input$variable2],infected[input$variable2],recovered[input$variable2])
+    names(init) <- c("S","I","R")
+    #init
+    fit <- data.frame(ode(y = init, times = t, func = SIR2, parms = parms))
+    col <- 1:3 # colour
+    matplot(fit$time, fit[ , 2:4], type = "l", xlab = "Day", ylab = "log10(Number of subjects)", lwd = 2, lty = 1, col = c("#000000", "#FF0000","#0000AA"))
+    #points(Day, Infected)
+    legend("bottomright", c("susceptible", "infected", "recovered"), lty = 1, lwd = 2, col = c("#000000", "#FF0000","#0000AA"), inset = 0.05)
+    title(title[input$variable2], outer = TRUE, line = -2)
+    #R0 <- setNames(Opt_par["beta"] / Opt_par["gamma"], "R0")
+    #fit[fit$I == max(fit$I), "I", drop = FALSE] # height of pandemic
+    #max_infected <- max(fit$I)
+    #max_infected / 5 
+    #max_infected * 0.06 # cases with need for intensive care
+    #max_infected * 0.007 # deaths with supposed 0.7% fatality rate
+    # bins <- seq(min(x), max(x), length.out = input$time + 1)
+    # draw the histogram with the specified number of bins
+    #hist(x, breaks = bins, col = 'darkgray', border = 'white')
   }) 
   
   output$tempPlot <- renderPlot({

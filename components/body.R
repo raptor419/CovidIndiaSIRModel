@@ -30,10 +30,10 @@ body <- dashboardBody(
                       value = 100),
           sliderInput("mf",
                       "Multiplication Factor:",
-                      min = 2,
+                      min = 1,
                       max = 10,
                       value = 4),
-          selectInput("variable", "Variable:",
+          selectInput("variable", "State:",
                       c("Uttar Pradesh" = "up",
                         "Rajasthan" = "rj",
                         "Karnataka" = "kr",
@@ -49,6 +49,37 @@ body <- dashboardBody(
         box( plotOutput("distPlot")),
         
        
+      )
+    ),
+    tabItem(
+      tabName = "sir2",
+      fluidRow(
+        
+        # CONTROLS
+        box(
+          
+          title = "Parameters",
+          
+          sliderInput("time2",
+                      "Time of Prediction:",
+                      min = 0,
+                      max = 200,
+                      value = 100),
+          selectInput("variable2", "State:",
+                      c("Uttar Pradesh" = "up",
+                        "Rajasthan" = "rj",
+                        "Karnataka" = "kr",
+                        "Delhi" = "dl",
+                        "Maharashtra" = "mh",
+                        "Kerala" = "k", 
+                        "India" = "in")),
+          
+          
+        ),
+        # PLOT THE THTINGS
+        # box( tableOutput("data") ),
+        box( plotOutput("distPlot2")),
+        
       )
     ),
 
@@ -87,6 +118,7 @@ body <- dashboardBody(
         # box( tableOutput("data") ),
         box( plotOutput("tempPlot")),
         box( plotOutput("tempPlot2")),
+        #box( plotOutput("gamsumm")),
         box( pre(textOutput("gamsumm")), tags$style(type="text/css", "#gamsumm {white-space: pre-wrap;}"))
 
       )

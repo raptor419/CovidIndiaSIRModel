@@ -21,6 +21,16 @@ SIR <- function(time, state, parameters) {
     list(c(dS, dI, dR))
   })}
 
+SIR2 <- function(time, state, parameters) {
+  par <- as.list(c(state, parameters))
+  #N <- N
+  with(par, {
+    dS <- -beta/N * I * S
+    dI <- beta/N * I * S - gamma * I
+    dR <- gamma * I
+    list(c(dS, dI, dR))
+  })}
+
 RSS <- function(parameters) {
   names(parameters) <- c("beta", "gamma")
   out <- ode(y = init, times = Day, func = SIR, parms = parameters)
