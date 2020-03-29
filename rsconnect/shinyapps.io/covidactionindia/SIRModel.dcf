@@ -5,8 +5,8 @@ account: covidactionindia
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2009375
-bundleId: 2934723
+bundleId: 2935652
 url: https://covidactionindia.shinyapps.io/SIRModel/
-when: 1585361843.77047
+when: 1585387775.76009
 asMultiple: FALSE
 asStatic: FALSE
